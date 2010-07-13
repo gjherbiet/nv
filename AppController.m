@@ -24,7 +24,8 @@
 #import "MultiplePageView.h"
 #import "URLGetter.h"
 #import "LinearDividerShader.h"
-#import "NSString-Markdown.h"
+//#import "NSString-Markdown.h"
+#import "NSString-Textile.h"
 #import <WebKit/WebArchive.h>
 #include <Carbon/Carbon.h>
 
@@ -1531,7 +1532,8 @@ terminateApp:
 
 - (void)preview:(id)context
 {
-	NSString* processedString = [NSString stringWithProcessedMarkdown:[textView string]];
+	//NSString* processedString = [NSString stringWithProcessedMarkdown:[textView string]];
+	NSString* processedString = [NSString stringWithProcessedTextile:[textView string]];
 	NSString* htmlString = [NSString stringWithFormat:@"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html><head><style type=\"text/css\">body { font-family: Helvetica, sans-serif; }</style></head><body>%@</body></html>", processedString];
 	
 	[[webView mainFrame] loadHTMLString:htmlString baseURL:nil];
