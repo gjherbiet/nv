@@ -1,10 +1,13 @@
 #!/usr/bin/perl
 
-use	Text::Textile qw(textile);
+use	Text::Textile;
 
 my $text;
 {
 	local $/;               # Slurp the whole file
 	$text = <>;
 }
-print textile($text);
+
+my $tt = new Text::Textile;
+$tt->charset("utf-8");
+print $tt->process($text);
